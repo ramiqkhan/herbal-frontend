@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "../src/Pages/Cart"; // <-- 1. Import the Cart Provider
 
-import Header from './components/Layout/Header'
+import Header from './Components/Layout/Header'
 import Footer from './Components/Layout/Footer';
 import Home from './Pages/Home';
 import AnnouncementBar from './Components/Home/AnnouncementBar';
