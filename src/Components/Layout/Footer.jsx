@@ -154,7 +154,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-12 items-start">
 
           {/* LOGO */}
-          <div className="w-full md:w-[25%] flex justify-center md:justify-start">
+          {/* <div className="w-full md:w-[25%] flex justify-center md:justify-start">
             <img
               src={navPic}
               alt="Herbalyze Logo"
@@ -167,72 +167,123 @@ const Footer = () => {
                 object-contain
               "
             />
-          </div>
+          </div> */}
 
           {/* CONTACT SECTION */}
-          <div className="w-full md:w-[25%] space-y-4 text-center md:text-left">
-            <h2 className="text-xl font-bold text-white">Herbalyze</h2>
+       <div className="w-full md:w-[25%] space-y-5 text-center md:text-left">
 
-            <p className="text-sm">
-              Pechs Block 2, Karachi, Pakistan
-            </p>
+  {/* LOGO */}
+  <div className="flex justify-center md:justify-start">
+    <img
+      src={navPic}
+      alt="Herbalyze Logo"
+      className="
+        w-[130px]
+        sm:w-[170px]
+        md:w-[210px]
+        lg:w-[240px]
+        h-auto
+        object-contain
+      "
+    />
+  </div>
 
-            <div className="flex items-center justify-center md:justify-start gap-3 text-sm">
-              <Mail className="w-5 h-5 text-[#6aa56a]" />
-              <p>info.herbalyze@gmail.com</p>
-            </div>
+  {/* ADDRESS */}
+  <p className="text-sm leading-relaxed">
+    Pechs Block 2, Karachi, Pakistan
+  </p>
 
-            <div className="flex items-center justify-center md:justify-start gap-3 text-sm">
-              <Phone className="w-5 h-5 text-[#6aa56a]" />
-              <p>(+92) 3292608369</p>
-            </div>
+  {/* EMAIL */}
+  <div className="flex items-center justify-center md:justify-start gap-3 text-sm">
+    <Mail className="w-5 h-5 text-[#6aa56a] shrink-0" />
+    <p className="break-all">info.herbalyze@gmail.com</p>
+  </div>
 
-            {/* SOCIAL */}
-            <div className="flex gap-4 pt-2 text-lg justify-center md:justify-start">
-              <FaFacebook className="hover:text-white cursor-pointer transition hover:scale-110" />
-              <FaInstagram className="hover:text-white cursor-pointer transition hover:scale-110" />
-              <FaTiktok className="hover:text-white cursor-pointer transition hover:scale-110" />
-            </div>
-          </div>
+  {/* PHONE */}
+  <div className="flex items-center justify-center md:justify-start gap-3 text-sm">
+    <Phone className="w-5 h-5 text-[#6aa56a] shrink-0" />
+    <p>(+92) 3292608369</p>
+  </div>
+
+  {/* SOCIAL */}
+  <div className="flex gap-5 pt-2 text-lg justify-center md:justify-start">
+    <FaFacebook className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110" />
+    <FaInstagram className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110" />
+    <FaTiktok className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110" />
+  </div>
+
+
 
           {/* LINKS GRID */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center md:text-left">
+       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center md:text-left">
 
-            <div>
-              <h3 className="text-white font-semibold mb-4">Policies</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/terms-of-service">Terms of Service</Link></li>
-                <li><Link to="/shipping-policy">Shipping Policy</Link></li>
-                <li><Link to="/privacy-policy">Privacy Policy</Link></li>
-                <li><Link to="/refund-policy">Refund Policy</Link></li>
-                <li>FAQs</li>
-              </ul>
-            </div>
+  {/* POLICIES */}
+  <div>
+    <h3 className="text-white font-semibold text-base mb-4">
+      Policies
+    </h3>
 
-            <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/track">Track Order</Link></li>
-                <li>Testimonials</li>
-                <li><Link to="/contact">Contact Us</Link></li>
-                <li><Link to="/about">About Us</Link></li>
-                <li><Link to="/blogs">Blogs</Link></li>
-              </ul>
-            </div>
+    <ul className="space-y-2 text-sm">
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/terms-of-service">Terms of Service</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/shipping-policy">Shipping Policy</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/privacy-policy">Privacy Policy</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/refund-policy">Refund Policy</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        FAQs
+      </li>
+    </ul>
+  </div>
 
-            <div>
-              <h3 className="text-white font-semibold mb-4">Product Range</h3>
-              <ul className="space-y-2 text-sm">
-                <li>Body Pain Oil</li>
-                <li>Senna Powder</li>
-                <li>Teeth Whitening Powder</li>
-                <li>Hair Oil</li>
-                <li>BP Support</li>
-              </ul>
-            </div>
+  {/* QUICK LINKS */}
+  <div>
+    <h3 className="text-white font-semibold text-base mb-4">
+      Quick Links
+    </h3>
 
-          </div>
+    <ul className="space-y-2 text-sm">
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/track">Track Order</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        Testimonials
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/contact">Contact Us</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/about">About Us</Link>
+      </li>
+      <li className="hover:text-white transition cursor-pointer">
+        <Link to="/blogs">Blogs</Link>
+      </li>
+    </ul>
+  </div>
 
+  {/* PRODUCT RANGE */}
+  <div>
+    <h3 className="text-white font-semibold text-base mb-4">
+      Product Range
+    </h3>
+
+    <ul className="space-y-2 text-sm">
+      <li>Body Pain Oil</li>
+      <li>Senna Powder</li>
+      <li>Teeth Whitening Powder</li>
+      <li>Hair Oil</li>
+      <li>BP Support</li>
+    </ul>
+  </div>
+
+</div>
+</div>
         </div>
 
         {/* BOTTOM */}
