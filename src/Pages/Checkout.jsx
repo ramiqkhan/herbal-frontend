@@ -29,7 +29,7 @@ const Checkout = () => {
   });
 
   // Dynamic Shipping Fee Constant Configuration
-  const SHIPPING_FEE = 400.00;
+  const SHIPPING_FEE = 350.00;
 
   // Calculate Subtotal totals dynamically using your new basePrice configuration
   const subtotal = cartItems.reduce((total, item) => {
@@ -249,31 +249,31 @@ const Checkout = () => {
               <form id="checkout-shipping-form" onSubmit={handleSubmitOrder} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">First Name</label>
-                  <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} placeholder="John" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
+                  <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} placeholder="First Name" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">Last Name</label>
-                  <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} placeholder="Doe" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
+                  <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} placeholder="Last Name" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">Email Address</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="johndoe@example.com" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
+                  <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">Street Address / Location</label>
-                  <input type="text" name="address" value={formData.address} onChange={handleInputChange} placeholder="123 Herbal Way, Suite 4B" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
+                  <input type="text" name="address" value={formData.address} onChange={handleInputChange} placeholder="Street Address / Location" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">City</label>
-                  <input type="text" name="city" value={formData.city} onChange={handleInputChange} placeholder="Karachi" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
+                  <input type="text" name="city" value={formData.city} onChange={handleInputChange} placeholder="City" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">Phone Number</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="03001234567" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
+                  <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Phone Number" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" required />
                 </div>
                 <div className="sm:col-span-2">
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">Alternative Phone (Optional)</label>
-                  <input type="tel" name="optionalphone" value={formData.optionalphone} onChange={handleInputChange} placeholder="e.g., 03211234567" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" />
+                  <input type="tel" name="optionalphone" value={formData.optionalphone} onChange={handleInputChange} placeholder="Alternative Phone (Optional)" className="w-full border border-gray-200 bg-slate-50/50 rounded-xl p-3.5 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#355e3b]/20 focus:border-[#355e3b] transition text-sm font-semibold text-gray-800" />
                 </div>
                 <div className="sm:col-span-2 pt-2">
                   <label className="block text-xs font-bold uppercase text-gray-400 mb-2 tracking-wider">Payment Method</label>

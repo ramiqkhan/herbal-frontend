@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { CartProvider } from "../src/Pages/Cart"; // <-- 1. Import the Cart Provider
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { CartProvider } from "../src/Pages/Cart"; 
 
-import Header from './Components/Layout/Header'
+import Header from './Components/Layout/Header';
 import Footer from './Components/Layout/Footer';
 import Home from './Pages/Home';
 import AnnouncementBar from './Components/Home/AnnouncementBar';
@@ -18,12 +19,30 @@ import RefundPolicy from './Pages/RefundPolicy';
 import Checkout from "./Pages/Checkout";
 import ProductPage from "./Pages/ProductPage";
 
+// =========================================================
+// 🚀 INLINE SCROLL TO TOP COMPONENT (Yahan direct embed kar diya)
+// =========================================================
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Har page change par scroll ko top par le jayega
+  }, [pathname]);
+
+  return null;
+};
+
+// =========================================================
+// MAIN APP COMPONENT
+// =========================================================
 const App = () => {
   return (
     <BrowserRouter>
-      {/* 2. Wrap everything inside the CartProvider */}
       <CartProvider>
-        {/* <ScrollToTop /> */}
+        
+        {/* ✅ ScrollToTop ab bina kisi external file ke chalega */}
+        <ScrollToTop /> 
+        
         <AnnouncementBar />
         <Header />
         <Whatsapp />
@@ -39,9 +58,9 @@ const App = () => {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
-<Route path="/checkout" element={<Checkout />} />
-<Route path="/product/:id" element={<ProductPage />} />
-                  </Routes>
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+        </Routes>
 
         <Footer />
 
