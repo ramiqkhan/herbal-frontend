@@ -4,6 +4,7 @@ import { FiMenu, FiShoppingCart, FiX, FiPlus, FiMinus, FiTrash2 } from "react-ic
 import { Link, useNavigate } from "react-router-dom"; // Cleaned up imports
 import { useCart } from "../../Pages/Cart"; // Your Hook path
 import navPic from "../../assets/herblayze.png";
+import ProductDropdown from "./dropdown";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,6 +54,7 @@ const Header = () => {
           <Link to="/track" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Track Order</Link>
           <Link to="/blogs" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Blogs</Link>
           <Link to="/services" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Services</Link>
+          <ProductDropdown />
         </nav>
 
         {/* RIGHT ICONS */}
@@ -72,17 +74,94 @@ const Header = () => {
         </div>
       </div>
 
-      {/* MOBILE DROPDOWN MENU */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="bg-[#f8f5ee] border-t border-gray-200 px-5 py-5 flex flex-col gap-5 shadow-md">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="text-[#355e3b] font-medium hover:translate-x-2 transition">Home</Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)} className="text-[#355e3b] font-medium hover:translate-x-2 transition">About Us</Link>
-          <Link to="/contact" onClick={() => setMenuOpen(false)} className="text-[#355e3b] font-medium hover:translate-x-2 transition">Contact</Link>
-          <Link to="/track" onClick={() => setMenuOpen(false)} className="text-[#355e3b] font-medium hover:translate-x-2 transition">Track Order</Link>
-          <Link to="/blogs" onClick={() => setMenuOpen(false)} className="text-[#355e3b] font-medium hover:translate-x-2 transition">Blogs</Link>
-          <Link to="/services" onClick={() => setMenuOpen(false)} className="text-[#355e3b] font-medium hover:translate-x-2 transition">Services</Link>
-        </div>
-      </div>
+{/* MOBILE FULLSCREEN MENU */}
+<div
+  className={`
+    fixed inset-0 z-50 bg-[#f8f5ee]
+    transform transition-transform duration-300 ease-in-out
+    md:hidden
+    ${menuOpen ? "translate-x-0" : "-translate-x-full"}
+  `}
+>
+
+  {/* MENU CONTENT */}
+  <div className="flex flex-col h-full px-6 py-8">
+
+    {/* TOP BAR */}
+    <div className="flex items-center justify-between mb-10">
+
+      <img
+        src={navPic}
+        alt="HerbalYze Logo"
+        className="h-10 object-contain"
+      />
+
+      <button
+        onClick={() => setMenuOpen(false)}
+        className="text-3xl text-[#355e3b]"
+      >
+        <FiX />
+      </button>
+
+    </div>
+
+    {/* LINKS */}
+    <div className="flex flex-col gap-6 text-lg font-medium">
+
+      <Link
+        to="/"
+        onClick={() => setMenuOpen(false)}
+        className="text-[#355e3b]"
+      >
+        Home
+      </Link>
+
+      <Link
+        to="/about"
+        onClick={() => setMenuOpen(false)}
+        className="text-[#355e3b]"
+      >
+        About Us
+      </Link>
+
+      <Link
+        to="/contact"
+        onClick={() => setMenuOpen(false)}
+        className="text-[#355e3b]"
+      >
+        Contact
+      </Link>
+
+      <Link
+        to="/track"
+        onClick={() => setMenuOpen(false)}
+        className="text-[#355e3b]"
+      >
+        Track Order
+      </Link>
+
+      <Link
+        to="/blogs"
+        onClick={() => setMenuOpen(false)}
+        className="text-[#355e3b]"
+      >
+        Blogs
+      </Link>
+
+      <Link
+        to="/services"
+        onClick={() => setMenuOpen(false)}
+        className="text-[#355e3b]"
+      >
+        Services
+      </Link>
+
+      <ProductDropdown />
+
+    </div>
+
+  </div>
+</div>
 
       {/* SIDEBAR CART DRAWER OVERLAY */}
       <div className={`fixed inset-0 z-50 transition-opacity duration-300 ${isCartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
