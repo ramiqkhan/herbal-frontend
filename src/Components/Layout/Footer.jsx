@@ -132,163 +132,127 @@
 // };
 
 // export default Footer;
-import {
-  Mail,
-  Phone,
-} from "lucide-react";
-
-import {
-  FaFacebook,
-  FaInstagram,
-  FaTiktok,
-} from "react-icons/fa";
+import { Mail, Phone } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import navPic from "../../assets/logotext.png";
 import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="w-full bg-[#1f2f1f] text-gray-300 pt-12 pb-8 mt-auto">
-
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
+        
+        {/* TOP SECTION - Flex layout setup properly for desktop layout flow */}
+        <div className="flex flex-col md:flex-row gap-12 md:gap-8 items-start justify-between">
 
-        {/* TOP SECTION */}
-        <div className="flex flex-col md:flex-row gap-12 items-start">
+          {/* CONTACT SECTION (LEFT BLOCK) */}
+          <div className="w-full md:w-[28%] space-y-5 text-center md:text-left">
+            {/* LOGO */}
+            <div className="flex justify-center md:justify-start">
+              <img
+                src={navPic}
+                alt="Herbalyze Logo"
+                className="w-[130px] sm:w-[170px] md:w-[210px] lg:w-[240px] h-auto object-contain"
+              />
+            </div>
 
-          {/* LOGO */}
-          {/* <div className="w-full md:w-[25%] flex justify-center md:justify-start">
-            <img
-              src={navPic}
-              alt="Herbalyze Logo"
-              className="
-                w-[160px]
-                sm:w-[200px]
-                md:w-[240px]
-                lg:w-[280px]
-                h-auto
-                object-contain
-              "
-            />
-          </div> */}
+            {/* ADDRESS */}
+            <p className="text-sm leading-relaxed text-gray-400">
+              Pechs Block 2, Karachi, Pakistan
+            </p>
 
-          {/* CONTACT SECTION */}
-       <div className="w-full md:w-[25%] space-y-5 text-center md:text-left">
+            {/* EMAIL */}
+            <div className="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-400">
+              <Mail className="w-5 h-5 text-[#6aa56a] shrink-0" />
+              <p className="break-all">info.herbalyze@gmail.com</p>
+            </div>
 
-  {/* LOGO */}
-  <div className="flex justify-center md:justify-start">
-    <img
-      src={navPic}
-      alt="Herbalyze Logo"
-      className="
-        w-[130px]
-        sm:w-[170px]
-        md:w-[210px]
-        lg:w-[240px]
-        h-auto
-        object-contain
-      "
-    />
-  </div>
+            {/* PHONE */}
+            <div className="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-400">
+              <Phone className="w-5 h-5 text-[#6aa56a] shrink-0" />
+              <p>(+92) 3292608369</p>
+            </div>
 
-  {/* ADDRESS */}
-  <p className="text-sm leading-relaxed">
-    Pechs Block 2, Karachi, Pakistan
-  </p>
+            {/* SOCIAL */}
+            <div className="flex gap-5 pt-2 text-lg justify-center md:justify-start">
+              <FaFacebook className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110 text-gray-400" />
+              <FaInstagram className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110 text-gray-400" />
+              <FaTiktok className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110 text-gray-400" />
+            </div>
+          </div>
 
-  {/* EMAIL */}
-  <div className="flex items-center justify-center md:justify-start gap-3 text-sm">
-    <Mail className="w-5 h-5 text-[#6aa56a] shrink-0" />
-    <p className="break-all">info.herbalyze@gmail.com</p>
-  </div>
+          {/* LINKS GRID (RIGHT BLOCK) - FIXED: Separated from the contact section container */}
+          <div className="w-full md:w-[68%] grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-6 text-center md:text-left">
 
-  {/* PHONE */}
-  <div className="flex items-center justify-center md:justify-start gap-3 text-sm">
-    <Phone className="w-5 h-5 text-[#6aa56a] shrink-0" />
-    <p>(+92) 3292608369</p>
-  </div>
+            {/* POLICIES */}
+            <div>
+              <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
+                Policies
+              </h3>
+              <ul className="space-y-2.5 text-sm text-gray-400">
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/terms-of-service">Terms of Service</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/shipping-policy">Shipping Policy</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/privacy-policy">Privacy Policy</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/refund-policy">Refund Policy</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  FAQs
+                </li>
+              </ul>
+            </div>
 
-  {/* SOCIAL */}
-  <div className="flex gap-5 pt-2 text-lg justify-center md:justify-start">
-    <FaFacebook className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110" />
-    <FaInstagram className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110" />
-    <FaTiktok className="hover:text-white cursor-pointer transition-transform duration-300 hover:scale-110" />
-  </div>
+            {/* QUICK LINKS */}
+            <div>
+              <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
+                Quick Links
+              </h3>
+              <ul className="space-y-2.5 text-sm text-gray-400">
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/track">Track Order</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  Testimonials
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/contact">Contact Us</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/about">About Us</Link>
+                </li>
+                <li className="hover:text-white transition cursor-pointer">
+                  <Link to="/blogs">Blogs</Link>
+                </li>
+              </ul>
+            </div>
 
+            {/* PRODUCT RANGE */}
+            <div>
+              <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
+                Product Range
+              </h3>
+              <ul className="space-y-2.5 text-sm text-gray-400">
+                <li className="hover:text-white transition cursor-pointer">Body Pain Oil</li>
+                <li className="hover:text-white transition cursor-pointer">Senna Powder</li>
+                <li className="hover:text-white transition cursor-pointer">Teeth Whitening Powder</li>
+                <li className="hover:text-white transition cursor-pointer">Hair Oil</li>
+                <li className="hover:text-white transition cursor-pointer">BP Support</li>
+              </ul>
+            </div>
 
+          </div>
 
-          {/* LINKS GRID */}
-       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-center md:text-left">
-
-  {/* POLICIES */}
-  <div>
-    <h3 className="text-white font-semibold text-base mb-4">
-      Policies
-    </h3>
-
-    <ul className="space-y-2 text-sm">
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/terms-of-service">Terms of Service</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/shipping-policy">Shipping Policy</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/privacy-policy">Privacy Policy</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/refund-policy">Refund Policy</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        FAQs
-      </li>
-    </ul>
-  </div>
-
-  {/* QUICK LINKS */}
-  <div>
-    <h3 className="text-white font-semibold text-base mb-4">
-      Quick Links
-    </h3>
-
-    <ul className="space-y-2 text-sm">
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/track">Track Order</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        Testimonials
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/contact">Contact Us</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/about">About Us</Link>
-      </li>
-      <li className="hover:text-white transition cursor-pointer">
-        <Link to="/blogs">Blogs</Link>
-      </li>
-    </ul>
-  </div>
-
-  {/* PRODUCT RANGE */}
-  <div>
-    <h3 className="text-white font-semibold text-base mb-4">
-      Product Range
-    </h3>
-
-    <ul className="space-y-2 text-sm">
-      <li>Body Pain Oil</li>
-      <li>Senna Powder</li>
-      <li>Teeth Whitening Powder</li>
-      <li>Hair Oil</li>
-      <li>BP Support</li>
-    </ul>
-  </div>
-
-</div>
-</div>
         </div>
 
-        {/* BOTTOM */}
-        <div className="text-center text-xs text-gray-400 mt-10 border-t border-gray-800 pt-6">
-          © 2025 <Link to="/">Herbalyze</Link>. All rights reserved.
+        {/* BOTTOM COPYRIGHT */}
+        <div className="text-center text-xs text-gray-500 mt-12 border-t border-gray-800/60 pt-6">
+          © {new Date().getFullYear()} <Link to="/" className="hover:text-white transition">Herbalyze</Link>. All rights reserved.
         </div>
 
       </div>
@@ -297,7 +261,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
 
 
 
