@@ -238,11 +238,11 @@ const Footer = () => {
                 Product Range
               </h3>
               <ul className="space-y-2.5 text-sm text-gray-400">
-                <li className="hover:text-white transition cursor-pointer">Body Pain Oil</li>
-                <li className="hover:text-white transition cursor-pointer">Senna Powder</li>
-                <li className="hover:text-white transition cursor-pointer">Teeth Whitening Powder</li>
-                <li className="hover:text-white transition cursor-pointer">Hair Oil</li>
-                <li className="hover:text-white transition cursor-pointer">BP Support</li>
+                <li className="hover:text-white transition cursor-pointer">Herbalyze Body Pain Oil</li>
+                <li className="hover:text-white transition cursor-pointer">Herbalyze Senna Powder</li>
+                <li className="hover:text-white transition cursor-pointer">Herbalyze Teeth Whitening Powder</li>
+                <li className="hover:text-white transition cursor-pointer">Herbalyze Sugar And Blood Pressure</li>
+                <li className="hover:text-white transition cursor-pointer">Herbalyze Hair Oil</li>
               </ul>
             </div>
 
