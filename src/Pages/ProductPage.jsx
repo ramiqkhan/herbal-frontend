@@ -21,26 +21,36 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // ✅ UPDATED TO LIVE DEPLOYED ROUTE URL STREAM
+        // ✅ DEPLOYED ROUTE URL STREAM
         const res = await fetch(`https://herbal-backend-chi.vercel.app/api/products/${id}`);
         if (!res.ok) throw new Error("Product data link endpoint down.");
         
         const data = await res.json();
         setProduct(data);
         
-        // Set the initial main image once data loads
-        if (data?.images?.length > 0) {
+        // ✅ FIXED STEP 1: Default size select karna aur check karna agar uski apni image array majood hai
+        if (data?.sizes?.length > 0) {
+          const defaultSize = data.sizes[0];
+          setSelectedSize(defaultSize);
+          
+          // Agar size ki apni variation images array mein image hai toh pehle woh active hogi
+          if (defaultSize.images && defaultSize.images.length > 0) {
+            setActiveImage(defaultSize.images[0]);
+          } else if (defaultSize.image) {
+            // Safe fallback checking if any old data context strings exist
+            setActiveImage(defaultSize.image);
+          } else if (data?.images?.length > 0) {
+            setActiveImage(data.images[0]);
+          }
+        } else if (data?.images?.length > 0) {
+          // Agar product ke sizes hi nahi hain, toh default main image set hogi
           setActiveImage(data.images[0]);
         }
 
-        // Automatically default to the first size option if available
-        if (data?.sizes?.length > 0) {
-          setSelectedSize(data.sizes[0]);
-        }
       } catch (err) {
         console.error("Error fetching unique product specs from deployment server:", err);
       } finally {
-        setLoading(false);
+        loading && setLoading(false);
       }
     };
 
@@ -90,6 +100,19 @@ const ProductPage = () => {
     navigate('/checkout');
   };
 
+  // ✅ FIXED STEP 2: Size click handle karne par structural check array logic 
+  const handleSizeSelect = (size) => {
+    setSelectedSize(size);
+    
+    // Check karega agar size ke andar images ka array hai aur usme koi image majood hai
+    if (size.images && size.images.length > 0) {
+      setActiveImage(size.images[0]);
+    } else if (size.image) {
+      // Safe fallback string parameter tracking
+      setActiveImage(size.image);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
@@ -127,7 +150,7 @@ const ProductPage = () => {
         
         {/* LEFT COLUMN: INTERACTIVE VISUAL GALLERY */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 shadow-xs">
+          <div className="overflow-hidden rounded-3xl bg-slate-50 border border-slate-100 shadow-xs aspect-square max-h-[500px]">
             <img
               src={activeImage || "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=500&auto=format&fit=crop"}
               alt={product.name}
@@ -188,7 +211,7 @@ const ProductPage = () => {
                     <button
                       key={size._id || index}
                       type="button"
-                      onClick={() => setSelectedSize(size)}
+                      onClick={() => handleSizeSelect(size)}
                       className={`px-5 py-3 rounded-xl font-bold text-sm transition-all border cursor-pointer flex flex-col items-center ${
                         isSelected
                           ? "bg-[#355e3b] text-white border-[#355e3b] shadow-sm scale-95"

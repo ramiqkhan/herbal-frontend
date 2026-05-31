@@ -5,17 +5,18 @@ const messages = [
   { text: "Fuel Charges Are Now Effective", icon: <Truck size={14} /> },
   { text: "Secure Payment Available", icon: <CreditCard size={14} /> },
   { text: "100% Natural Herbal Products", icon: <Leaf size={14} /> },
-    { text: "Fuel Charges Are Now Effective", icon: <Truck size={14} /> },
+  { text: "Fuel Charges Are Now Effective", icon: <Truck size={14} /> },
   { text: "Secure Payment Available", icon: <CreditCard size={14} /> },
   { text: "100% Natural Herbal Products", icon: <Leaf size={14} /> },
-    { text: "Fuel Charges Are Now Effective", icon: <Truck size={14} /> },
+  { text: "Fuel Charges Are Now Effective", icon: <Truck size={14} /> },
   { text: "Secure Payment Available", icon: <CreditCard size={14} /> },
   { text: "100% Natural Herbal Products", icon: <Leaf size={14} /> },
 ];
 
 const AnnouncementBar = () => {
   return (
-    <div className="w-full bg-[#1e3a24] text-white overflow-hidden relative z-[60] border-b border-white/10 shadow-sm">
+    <div className="w-full bg-[#1e3a24] text-white overflow-hidden relative z-10 border-b border-white/10 shadow-sm">
+      {/* ✅ FIXED: Comment ko root div ke andar move kar diya taake syntax error khatam ho jaye */}
       <style>{`
         @keyframes scroll {
           0% { transform: translateX(0); }
