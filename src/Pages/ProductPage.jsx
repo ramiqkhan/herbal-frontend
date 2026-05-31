@@ -176,27 +176,39 @@ const ProductPage = () => {
 
         {/* RIGHT COLUMN: DETAIL CHECKOUT INFORMATION OVERVIEW */}
         <div className="lg:col-span-6 space-y-6 lg:sticky lg:top-28">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#355e3b] bg-green-50 px-3 py-1 rounded-md inline-block mb-3">
-              Premium Herbal Selection
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-black text-[#2d2a26] tracking-tight">{product.name}</h1>
-            
-            {/* 💰 DYNAMIC PRICES WRAPPER BLOCK WITH STRIKE-THROUGH */}
-            <div className="flex items-baseline gap-3 mt-3">
-              {/* Actual Selling Price */}
-              <span className="text-2xl font-black text-[#355e3b] tracking-tight">
-                Rs. {displaySellingPrice.toLocaleString('en-PK')}
-              </span>
+        <div>
+  {/* ✅ FIXED: Sirf is badge ko wrap kiya hai taake yeh screen par center ho jaye */}
+ <div className="w-full text-center mb-5">
+  <span className="inline-block bg-[#355e3b] px-4 py-1 text-[10px] md:text-xs font-bold tracking-[0.18em] uppercase text-white rounded-md shadow-xs">
+    Hot Product | Low Stock
+  </span>
+</div>
 
-              {/* ❌ Cut-out Price */}
-              {displayOriginalPrice && (
-                <span className="text-base text-gray-400 line-through font-medium font-mono">
-                  Rs. {parseFloat(displayOriginalPrice).toLocaleString('en-PK')}
-                </span>
-              )}
-            </div>
-          </div>
+  {/* Baaki sab pehle jaisa hi left-aligned rahega */}
+  
+  <span className="text-xs font-bold uppercase tracking-widest text-[#355e3b] bg-green-50 px-3 py-1 rounded-md inline-block mb-3">
+    Premium Herbal Selection
+  </span>
+  
+  <h1 className="text-3xl sm:text-4xl font-black text-[#2d2a26] tracking-tight">
+    {product.name}
+  </h1>
+  
+  {/* 💰 DYNAMIC PRICES WRAPPER BLOCK WITH STRIKE-THROUGH */}
+  <div className="flex items-baseline gap-3 mt-3">
+    {/* Actual Selling Price */}
+    <span className="text-2xl font-black text-[#355e3b] tracking-tight">
+      Rs. {displaySellingPrice.toLocaleString('en-PK')}
+    </span>
+
+    {/* ❌ Cut-out Price */}
+    {displayOriginalPrice && (
+      <span className="text-base text-gray-400 line-through font-medium font-mono">
+        Rs. {parseFloat(displayOriginalPrice).toLocaleString('en-PK')}
+      </span>
+    )}
+  </div>
+</div>
 
           <hr className="border-gray-100" />
 
