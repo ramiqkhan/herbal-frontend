@@ -238,31 +238,35 @@ const Footer = () => {
             </div>
 
             {/* SOCIAL */}
-            <div className="flex gap-4 pt-2 text-lg">
-              <a 
-                href="https://www.facebook.com/profile.php?id=61570610496995"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
-              </a>
+         {/* SOCIAL ICONS CONTAINER */}
+<div className="flex justify-center md:justify-start gap-6 pt-2 text-2xl">
+  <a 
+    href="https://www.facebook.com/profile.php?id=61570610496995"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition duration-300 hover:scale-110"
+  >
+    <FaFacebook />
+  </a>
 
-              <a
-                href="https://www.instagram.com/theherbalyze?igsh=ajRjNGpnenF1NTR1"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaInstagram className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
-              </a>
+  <a
+    href="https://www.instagram.com/theherbalyze?igsh=ajRjNGpnenF1NTR1"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition duration-300 hover:scale-110"
+  >
+    <FaInstagram />
+  </a>
 
-              <a
-                href="https://www.tiktok.com/@theherbalyze" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTiktok className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
-              </a>
-            </div>
+  <a
+    href="https://www.tiktok.com/@theherbalyze" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white cursor-pointer transition duration-300 hover:scale-110"
+  >
+    <FaTiktok />
+  </a>
+</div>
           </div>
 
           {/* LINKS GRID (RIGHT BLOCK) - FIXED: Separated from the contact section container */}

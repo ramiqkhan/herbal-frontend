@@ -47,7 +47,7 @@ const App = () => {
         
         <AnnouncementBar />
         <Header />
-        <Whatsapp />
+      
         
         <Routes>
           <Route path="/" element={<Home />} />
@@ -63,7 +63,7 @@ const App = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/product/:seoUrl" element={<ProductPage />} />
         </Routes>
-
+  <Whatsapp />
         <Footer />
 
       </CartProvider>
