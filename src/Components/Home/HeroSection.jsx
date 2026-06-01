@@ -580,10 +580,10 @@ const HeroBanner = () => {
     h-auto
     block
 
-    min-h-[140px]
-    sm:min-h-[220px]
-    md:min-h-[300px]
-    lg:min-h-[420px]
+    min-h-35
+    sm:min-h-55
+    md:min-h-75
+    lg:min-h-105
 
     object-cover
   "
