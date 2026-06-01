@@ -60,7 +60,7 @@ const App = () => {
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/product/:seoUrl" element={<ProductPage />} />
         </Routes>
 
         <Footer />

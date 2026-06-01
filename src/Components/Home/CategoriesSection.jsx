@@ -113,7 +113,8 @@ const CategoryCard = () => {
               return (
                 <div
                   key={product._id}
-                  onClick={() => navigate(`/product/${product._id}`)}
+                  // ✅ FIXED STEP 1: product._id se badal kar product.seoUrl kar diya hai taake URL clean text dikhaye
+                  onClick={() => navigate(`/product/${product.seoUrl || product._id}`)}
                   className="bg-white rounded-[28px] overflow-hidden border border-gray-100 hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 group cursor-pointer flex flex-col justify-between h-full min-h-[520px]"
                 >
                   {/* IMAGE & BADGES CONTAINER */}
