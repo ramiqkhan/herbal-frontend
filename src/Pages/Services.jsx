@@ -1,5 +1,6 @@
 import AppointmentForm from "../Components/AppointmentForm";
 import React, { useEffect } from "react";
+import SEO from "../Components/SEO";
 export default function DoctorService() {
   useEffect(() => {
     document.title = "Services | Herbalyze";
@@ -39,6 +40,12 @@ export default function DoctorService() {
   ];
 
   return (
+    <><SEO
+  title="Our Services & Formulations | Herbalyze"
+  description="Explore our specialized services in sourcing, preparing, and delivery of premium, unadulterated herbal treatments."
+  keywords="herbal consulting, natural wellness services"
+  url="https://www.theherbalyze.com/services"
+/>
     <div className="w-full bg-[#f5f3ee] text-[#1f2a1f]">
       
       {/* HERO SECTION */}
@@ -160,6 +167,6 @@ export default function DoctorService() {
 
       {/* APPOINTMENT FORM */}
       <AppointmentForm />
-    </div>
+    </div></>
   );
 }

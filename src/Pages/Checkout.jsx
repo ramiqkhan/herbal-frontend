@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useCart } from '../../src/Pages/Cart'; // Using your verified path configuration
 import { Link, useNavigate } from 'react-router-dom';
 import { FiArrowRight, FiArrowLeft, FiShoppingBag, FiCheckCircle, FiLoader } from 'react-icons/fi';
+import SEO from '../Components/SEO';
 
 // ✅ LIVE DEPLOYED PRODUCTION ENDPOINT
 const BASE_URL = "https://herbal-backend-chi.vercel.app/api/orders";
@@ -134,7 +135,11 @@ const Checkout = () => {
   }
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
+    <><SEO
+  title="Secure Checkout | Herbalyze"
+  description="Complete your order securely at Herbalyze. Premium organic remedies are just a step away."
+  url="https://www.theherbalyze.com/checkout"
+/>     <div className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
       
       {/* STEPS PROGRESS INDICATOR BAR */}
       <div className="flex items-center justify-center gap-4 mb-10 max-w-md mx-auto text-sm font-semibold">
@@ -362,7 +367,8 @@ const Checkout = () => {
         </div>
 
       </div>
-    </div>
+    </div></>
+
   );
 };
 

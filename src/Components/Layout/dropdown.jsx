@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Loader2, Leaf } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const ProductDropdown = () => {
+const ProductDropdown = ({ setMenuOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -12,6 +12,18 @@ const ProductDropdown = () => {
 
   // ✅ Your exact active live herbal backend URL
   const BASE_URL = "https://herbal-backend-chi.vercel.app/api/products";
+
+  // Helper inside the component to handle dynamic fallback if seoUrl is missing
+  const getProductSlug = (product) => {
+    if (product.seoUrl) return product.seoUrl;
+    if (!product.name) return product._id || "";
+    return product.name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  };
 
   // Fetch all products stream when dropdown opens
   const fetchAllProducts = async () => {
@@ -62,9 +74,15 @@ const ProductDropdown = () => {
     }
   };
 
-  const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
+  const handleProductClick = (product) => {
+    const productSlug = getProductSlug(product);
+    navigate(`/product/${productSlug}`);
     setIsOpen(false); // Automatically dismiss menu panel on route selection
+    
+    // ✅ Closes the mobile toggle bar menu overlay instantly
+    if (setMenuOpen) {
+      setMenuOpen(false);
+    }
   };
 
   return (
@@ -120,7 +138,7 @@ const ProductDropdown = () => {
             return (
               <div
                 key={product._id}
-                onClick={() => handleProductClick(product._id)}
+                onClick={() => handleProductClick(product)}
                 className="flex items-center gap-3.5 px-4 py-3 hover:bg-[#fdfcfb] cursor-pointer border-b border-gray-50 last:border-b-0 group transition-colors duration-200"
               >
                 {/* Image Showcase Miniature Display */}

@@ -132,12 +132,64 @@
 // };
 
 // export default Footer;
-import { Mail, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Mail, Phone, Loader2 } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import navPic from "../../assets/logotext.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // ✅ Your exact active live herbal backend URL
+  const BASE_URL = "https://herbal-backend-chi.vercel.app/api/products";
+
+  // Helper to handle dynamic fallback if seoUrl is missing
+  const getProductSlug = (product) => {
+    if (product.seoUrl) return product.seoUrl;
+    if (!product.name) return product._id || "";
+    return product.name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  };
+
+  // Fetch top products for the footer item catalog list
+  useEffect(() => {
+    const fetchFooterProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(BASE_URL);
+        if (!res.ok) throw new Error("Network error");
+        const data = await res.json();
+        
+        if (Array.isArray(data)) {
+          setProducts(data.slice(0, 5)); // Taking the first 5 products
+        } else if (data && Array.isArray(data.products)) {
+          setProducts(data.products.slice(0, 5));
+        } else if (data && Array.isArray(data.data)) {
+          setProducts(data.data.slice(0, 5));
+        }
+      } catch (err) {
+        console.error("Footer Products Fetch Error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFooterProducts();
+  }, []);
+
+  const handleProductClick = (product) => {
+    const productSlug = getProductSlug(product);
+    navigate(`/product/${productSlug}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll to top on dynamic navigation
+  };
+
   return (
     <footer className="w-full bg-[#1f2f1f] text-gray-300 pt-12 pb-8 mt-auto">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
@@ -164,51 +216,53 @@ const Footer = () => {
             {/* EMAIL */}
             <div className="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-400">
               <Mail className="w-5 h-5 text-[#6aa56a] shrink-0" />
-<a
-  href="mailto:info.herbalyze@gmail.com"
-  className="break-all hover:text-white transition-colors"
->
-  info.herbalyze@gmail.com
-</a>            </div>
+              <a
+                href="mailto:info.herbalyze@gmail.com"
+                className="break-all hover:text-white transition-colors"
+              >
+                info.herbalyze@gmail.com
+              </a>
+            </div>
 
             {/* PHONE */}
             <div className="flex items-center justify-center md:justify-start gap-3 text-sm text-gray-400">
               <Phone className="w-5 h-5 text-[#6aa56a] shrink-0" />
-<a
-  href="https://api.whatsapp.com/send/?phone=923292608369&text&type=phone_number&app_absent=0"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:text-white transition-colors"
->
-  <p>(+92) 3292608369</p>
-</a>            </div>
+              <a
+                href="https://api.whatsapp.com/send/?phone=923292608369&text&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                <p>(+92) 3292608369</p>
+              </a>
+            </div>
 
             {/* SOCIAL */}
-                 <div className="flex gap-4 pt-2 text-lg">
-  <a 
-              href="https://www.facebook.com/profile.php?id=61570610496995"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebook className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
-            </a>
+            <div className="flex gap-4 pt-2 text-lg">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61570610496995"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
+              </a>
 
-            <a
-              href="https://www.instagram.com/theherbalyze?igsh=ajRjNGpnenF1NTR1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
-            </a>
+              <a
+                href="https://www.instagram.com/theherbalyze?igsh=ajRjNGpnenF1NTR1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
+              </a>
 
-            <a
-              href="https://www.tiktok.com/@theherbalyze" 
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTiktok className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
-            </a>
-          </div>
+              <a
+                href="https://www.tiktok.com/@theherbalyze" 
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTiktok className="hover:text-white cursor-pointer transition duration-300 hover:scale-110" />
+              </a>
+            </div>
           </div>
 
           {/* LINKS GRID (RIGHT BLOCK) - FIXED: Separated from the contact section container */}
@@ -232,7 +286,6 @@ const Footer = () => {
                 <li className="hover:text-white transition cursor-pointer">
                   <Link to="/refund-policy">Refund Policy</Link>
                 </li>
-               
               </ul>
             </div>
 
@@ -245,7 +298,6 @@ const Footer = () => {
                 <li className="hover:text-white transition cursor-pointer">
                   <Link to="/track">Track Order</Link>
                 </li>
-              
                 <li className="hover:text-white transition cursor-pointer">
                   <Link to="/contact">Contact Us</Link>
                 </li>
@@ -258,18 +310,33 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* PRODUCT RANGE */}
+            {/* PRODUCT RANGE - NOW FETCHING DYNAMICALLY */}
             <div>
               <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
                 Product Range
               </h3>
-              <ul className="space-y-2.5 text-sm text-gray-400">
-                <li className="hover:text-white transition cursor-pointer">Herbalyze Body Pain Oil</li>
-                <li className="hover:text-white transition cursor-pointer">Herbalyze Senna Powder</li>
-                <li className="hover:text-white transition cursor-pointer">Herbalyze Teeth Whitening Powder</li>
-                <li className="hover:text-white transition cursor-pointer">Herbalyze Sugar And Blood Pressure</li>
-                <li className="hover:text-white transition cursor-pointer">Herbalyze Hair Oil</li>
-              </ul>
+              {loading ? (
+                <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 py-2">
+                  <Loader2 className="animate-spin text-[#6aa56a]" size={14} />
+                  <span className="text-xs uppercase tracking-wider text-gray-400">Loading catalog...</span>
+                </div>
+              ) : (
+                <ul className="space-y-2.5 text-sm text-gray-400">
+                  {products.map((product) => (
+                    <li
+                      key={product._id}
+                      onClick={() => handleProductClick(product)}
+                      className="hover:text-white transition cursor-pointer line-clamp-1"
+                    >
+                      {product.name}
+                    </li>
+                  ))}
+                  
+                  {!loading && products.length === 0 && (
+                    <li className="text-xs text-gray-500 italic">No products available</li>
+                  )}
+                </ul>
+              )}
             </div>
 
           </div>
@@ -287,7 +354,6 @@ const Footer = () => {
 };
 
 export default Footer;
-
 
 
 

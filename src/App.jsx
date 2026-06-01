@@ -38,6 +38,7 @@ const ScrollToTop = () => {
 // =========================================================
 const App = () => {
   return (
+    <HelmetProvider>
     <BrowserRouter>
       <CartProvider>
         
@@ -54,7 +55,7 @@ const App = () => {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/track" element={<Track />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/services" element={<Services />} />
+          {/* <Route path="/services" element={<Services />} /> */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
@@ -66,7 +67,7 @@ const App = () => {
         <Footer />
 
       </CartProvider>
-    </BrowserRouter>
+    </BrowserRouter></HelmetProvider>
   );
 };
 

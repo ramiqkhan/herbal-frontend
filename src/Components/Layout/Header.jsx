@@ -15,6 +15,18 @@ const Header = () => {
   // Extract state and functions from CartContext
   const { cartItems, isCartOpen, setIsCartOpen, cartCount, updateQuantity, removeFromCart } = useCart();
 
+  // Helper inside the component to handle dynamic fallback if seoUrl is missing
+  const getProductSlug = (item) => {
+    if (item.seoUrl) return item.seoUrl;
+    if (!item.name) return item._id || item.id || "";
+    return item.name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  };
+
   // Dynamically calculate the precise rolling drawer total using basePrice
   const drawerSubtotal = cartItems.reduce((total, item) => {
     return total + parseFloat(item.basePrice || 0) * item.quantity;
@@ -35,15 +47,15 @@ const Header = () => {
           </button>
 
          {/* LOGO - CENTER ON MOBILE */}
-  <div className="absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0">
-    <Link to="/">
-      <img
-        src={navPic}
-        alt="HerbalYze Logo"
-        className="h-10 sm:h-10 md:h-12 w-auto object-contain"
-      />
-    </Link>
-  </div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 md:static md:translate-x-0">
+            <Link to="/">
+              <img
+                src={navPic}
+                alt="HerbalYze Logo"
+                className="h-10 sm:h-10 md:h-12 w-auto object-contain"
+              />
+            </Link>
+          </div>
         </div>
 
         {/* DESKTOP MENU */}
@@ -53,8 +65,8 @@ const Header = () => {
           <Link to="/contact" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Contact Us</Link>
           <Link to="/track" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Track Order</Link>
           <Link to="/blogs" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Blogs</Link>
-          <Link to="/services" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Services</Link>
-          <ProductDropdown />
+          {/* <Link to="/services" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Services</Link> */}
+          <ProductDropdown setMenuOpen={setMenuOpen} />
         </nav>
 
         {/* RIGHT ICONS */}
@@ -74,94 +86,87 @@ const Header = () => {
         </div>
       </div>
 
-{/* MOBILE FULLSCREEN MENU */}
-<div
-  className={`
-    fixed inset-0 z-50 bg-[#f8f5ee]
-    transform transition-transform duration-300 ease-in-out
-    md:hidden
-    ${menuOpen ? "translate-x-0" : "-translate-x-full"}
-  `}
->
-
-  {/* MENU CONTENT */}
-  <div className="flex flex-col h-full px-6 py-8">
-
-    {/* TOP BAR */}
-    <div className="flex items-center justify-between mb-10">
-
-      <img
-        src={navPic}
-        alt="HerbalYze Logo"
-        className="h-10 object-contain"
-      />
-
-      <button
-        onClick={() => setMenuOpen(false)}
-        className="text-3xl text-[#355e3b]"
+      {/* MOBILE FULLSCREEN MENU */}
+      <div
+        className={`
+          fixed inset-0 z-50 bg-[#f8f5ee]
+          transform transition-transform duration-300 ease-in-out
+          md:hidden
+          ${menuOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
       >
-        <FiX />
-      </button>
+        {/* MENU CONTENT */}
+        <div className="flex flex-col h-full px-6 py-8">
 
-    </div>
+          {/* TOP BAR */}
+          <div className="flex items-center justify-between mb-10">
+            <img
+              src={navPic}
+              alt="HerbalYze Logo"
+              className="h-10 object-contain"
+            />
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-3xl text-[#355e3b]"
+            >
+              <FiX />
+            </button>
+          </div>
 
-    {/* LINKS */}
-    <div className="flex flex-col gap-6 text-lg font-medium">
+          {/* LINKS */}
+          <div className="flex flex-col gap-6 text-lg font-medium">
+            <Link
+              to="/"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#355e3b]"
+            >
+              Home
+            </Link>
 
-      <Link
-        to="/"
-        onClick={() => setMenuOpen(false)}
-        className="text-[#355e3b]"
-      >
-        Home
-      </Link>
+            <Link
+              to="/about"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#355e3b]"
+            >
+              About Us
+            </Link>
 
-      <Link
-        to="/about"
-        onClick={() => setMenuOpen(false)}
-        className="text-[#355e3b]"
-      >
-        About Us
-      </Link>
+            <Link
+              to="/contact"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#355e3b]"
+            >
+              Contact
+            </Link>
 
-      <Link
-        to="/contact"
-        onClick={() => setMenuOpen(false)}
-        className="text-[#355e3b]"
-      >
-        Contact
-      </Link>
+            <Link
+              to="/track"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#355e3b]"
+            >
+              Track Order
+            </Link>
 
-      <Link
-        to="/track"
-        onClick={() => setMenuOpen(false)}
-        className="text-[#355e3b]"
-      >
-        Track Order
-      </Link>
+            <Link
+              to="/blogs"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#355e3b]"
+            >
+              Blogs
+            </Link>
 
-      <Link
-        to="/blogs"
-        onClick={() => setMenuOpen(false)}
-        className="text-[#355e3b]"
-      >
-        Blogs
-      </Link>
+            {/* <Link
+              to="/services"
+              onClick={() => setMenuOpen(false)}
+              className="text-[#355e3b]"
+            >
+              Services
+            </Link> */}
 
-      <Link
-        to="/services"
-        onClick={() => setMenuOpen(false)}
-        className="text-[#355e3b]"
-      >
-        Services
-      </Link>
-
-      <ProductDropdown />
-
-    </div>
-
-  </div>
-</div>
+            <ProductDropdown setMenuOpen={setMenuOpen} />
+          </div>
+        </div>
+      </div>
 
       {/* SIDEBAR CART DRAWER OVERLAY */}
       <div className={`fixed inset-0 z-50 transition-opacity duration-300 ${isCartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
@@ -193,16 +198,21 @@ const Header = () => {
                 const itemId = item.id || item._id;
                 const activePrice = parseFloat(item.basePrice || 0);
                 const currentSizeLabel = item.selectedSize?.label || null;
+                const productSlug = getProductSlug(item);
 
                 return (
                   <div key={`${itemId}-${currentSizeLabel}`} className="flex gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 items-center">
-                    <img 
-                      src={item.image || (item.images && item.images[0]) || "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=500&auto=format&fit=crop"} 
-                      alt={item.name} 
-                      className="w-16 h-16 object-cover rounded-xl bg-gray-200 border border-gray-100 flex-shrink-0"
-                    />
+                    <Link to={`/product/${productSlug}`} onClick={() => setIsCartOpen(false)}>
+                      <img 
+                        src={item.image || (item.images && item.images[0]) || "https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?q=80&w=500&auto=format&fit=crop"} 
+                        alt={item.name} 
+                        className="w-16 h-16 object-cover rounded-xl bg-gray-200 border border-gray-100 flex-shrink-0 cursor-pointer hover:opacity-80 transition"
+                      />
+                    </Link>
                     <div className="flex-1">
-                      <h4 className="text-sm font-bold text-gray-800 line-clamp-1">{item.name}</h4>
+                      <Link to={`/product/${productSlug}`} onClick={() => setIsCartOpen(false)}>
+                        <h4 className="text-sm font-bold text-gray-800 line-clamp-1 cursor-pointer hover:text-[#355e3b] transition">{item.name}</h4>
+                      </Link>
                       
                       {/* FIXED: DYNAMIC SIZE LABEL INDICATOR */}
                       {item.selectedSize?.label && (
@@ -257,7 +267,7 @@ const Header = () => {
             <div className="p-6 border-t border-gray-200 bg-slate-50 space-y-4">
               <div className="flex justify-between items-center text-gray-800 font-bold text-sm px-1">
                 <span>Subtotal:</span>
-                <span className="text-[#355e3b] text-base font-black">Rs{drawerSubtotal.toFixed(2)}</span>
+                <span className="text-[#355e3b] text-base font-black">Rs {drawerSubtotal.toFixed(2)}</span>
               </div>
               <Link 
                 to="/checkout"
