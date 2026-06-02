@@ -171,7 +171,7 @@ const FAQ = () => {
 
 
 
-                            <Link to="/contact">
+                            <Link to="/pages/contact">
                                 <button
                                     className="
       bg-[#d4a017]

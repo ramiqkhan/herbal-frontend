@@ -42,8 +42,7 @@ const AboutUs = () => {
   description="Learn about Herbalyze and our mission to provide natural wellness solutions."
   keywords="about herbalyze, herbal company, natural wellness"
   image="https://www.theherbalyze.com/og-image.jpg"
-  url="https://www.theherbalyze.com/about"
-/>
+url="https://www.theherbalyze.com/pages/about" />
     <section className="w-full bg-[#f8f5ee] text-[#2d2a26] overflow-hidden">
 
       {/* HERO SECTION */}

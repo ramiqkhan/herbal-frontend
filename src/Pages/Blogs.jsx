@@ -57,7 +57,7 @@ const Blog = () => {
   description="Read herbal wellness tips, natural remedies, and healthy lifestyle articles."
   keywords="herbal blog, wellness blog, herbal remedies"
   image="https://www.theherbalyze.com/herballogo.png"
-  url="https://www.theherbalyze.com/blogs"
+ url="https://www.theherbalyze.com/blogs/news"
 />
 
     <section className="w-full bg-[#f5f3ee] py-16 min-h-screen">

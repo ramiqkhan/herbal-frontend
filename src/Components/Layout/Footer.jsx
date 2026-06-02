@@ -274,45 +274,53 @@ const Footer = () => {
 
             {/* POLICIES */}
             <div>
-              <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
-                Policies
-              </h3>
-              <ul className="space-y-2.5 text-sm text-gray-400">
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/terms-of-service">Terms of Service</Link>
-                </li>
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/shipping-policy">Shipping Policy</Link>
-                </li>
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/privacy-policy">Privacy Policy</Link>
-                </li>
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/refund-policy">Refund Policy</Link>
-                </li>
-              </ul>
-            </div>
+  <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
+    Policies
+  </h3>
+  <ul className="space-y-2.5 text-sm text-gray-400">
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/terms-of-service">Terms of Service</Link>
+    </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/shipping-policy">Shipping Policy</Link>
+    </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/privacy-policy">Privacy Policy</Link>
+    </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/refund-policy">Refund Policy</Link>
+    </li>
+  </ul>
+</div>
 
-            {/* QUICK LINKS */}
-            <div>
-              <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
-                Quick Links
-              </h3>
-              <ul className="space-y-2.5 text-sm text-gray-400">
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/track">Track Order</Link>
-                </li>
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/contact">Contact Us</Link>
-                </li>
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/about">About Us</Link>
-                </li>
-                <li className="hover:text-white transition cursor-pointer">
-                  <Link to="/blogs">Blogs</Link>
-                </li>
-              </ul>
-            </div>
+{/* QUICK LINKS */}
+<div>
+  <h3 className="text-white font-semibold text-base mb-4 tracking-wide">
+    Quick Links
+  </h3>
+  <ul className="space-y-2.5 text-sm text-gray-400">
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/track">Track Order</Link>
+    </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/contact">Contact Us</Link>
+    </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to Shopify-style */}
+      <Link to="/pages/about">About Us</Link>
+    </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to match /blogs/news */}
+      <Link to="/blogs/news">Blogs</Link>
+    </li>
+  </ul>
+</div>
 
             {/* PRODUCT RANGE - NOW FETCHING DYNAMICALLY */}
             <div>

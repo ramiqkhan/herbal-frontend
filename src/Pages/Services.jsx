@@ -44,7 +44,7 @@ export default function DoctorService() {
   title="Our Services & Formulations | Herbalyze"
   description="Explore our specialized services in sourcing, preparing, and delivery of premium, unadulterated herbal treatments."
   keywords="herbal consulting, natural wellness services"
-  url="https://www.theherbalyze.com/services"
+url="https://www.theherbalyze.com/"
 />
     <div className="w-full bg-[#f5f3ee] text-[#1f2a1f]">
       

@@ -82,7 +82,7 @@ useEffect(() => {
   description="Get in touch with Herbalyze for product inquiries and customer support."
   keywords="contact herbalyze, customer support"
   image="https://www.theherbalyze.com/herballogo.png"
-  url="https://www.theherbalyze.com/contact"
+url="https://www.theherbalyze.com/pages/contact"
 />
       {/* 🛎️ POPUP ALERT (Centered on the Page with Smooth Zoom In) */}
       {popup.show && (

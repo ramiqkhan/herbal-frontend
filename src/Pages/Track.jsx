@@ -105,7 +105,7 @@ const Track = () => {
   title="Track Your Order | Herbalyze"
   description="Track the real-time shipping status of your Herbalyze organic product order directly using your tracking ID."
   keywords="track order, herbalyze shipping status"
-  url="https://www.theherbalyze.com/track"
+url="https://www.theherbalyze.com/pages/track"
 />
     <section className="w-full bg-[#f5f3ee] min-h-screen py-16">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">

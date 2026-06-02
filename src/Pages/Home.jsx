@@ -22,7 +22,7 @@ const Home = () => {
         description="Premium herbal products for wellness, skincare and natural healing."
         keywords="herbal products, herbal oil, natural wellness, herbal supplements"
         image="https://www.theherbalyze.com/og-image.jpg"
-        url="https://www.theherbalyze.com/"
+      url="https://www.theherbalyze.com/"
       />
     <div>
      

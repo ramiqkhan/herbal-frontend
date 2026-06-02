@@ -49,20 +49,29 @@ const App = () => {
         <Header />
       
         
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/track" element={<Track />} />
-          <Route path="/blogs" element={<Blogs />} />
-          {/* <Route path="/services" element={<Services />} /> */}
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/shipping-policy" element={<ShippingPolicy />} />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/product/:seoUrl" element={<ProductPage />} />
-        </Routes>
+      <Routes>
+  {/* Main Root Pages */}
+  <Route path="/" element={<Home />} />
+  <Route path="/checkout" element={<Checkout />} />
+  <Route path="/product/:seoUrl" element={<ProductPage />} />
+
+  {/* 📰 Blogs (News) Link */}
+  <Route path="/blogs/news" element={<Blogs />} />
+
+  {/* 📄 Pages (Shopify-Style Paths) */}
+  <Route path="/pages/about" element={<AboutUs />} />
+  <Route path="/pages/contact" element={<ContactUs />} />
+  <Route path="/pages/track" element={<Track />} />
+  
+  {/* Agar future me services chalana ho to ye path hoga */}
+  {/* <Route path="/pages/services" element={<Services />} /> */}
+  
+  {/* Policies Paths */}
+  <Route path="/pages/privacy-policy" element={<PrivacyPolicy />} />
+  <Route path="/pages/terms-of-service" element={<TermsOfService />} />
+  <Route path="/pages/shipping-policy" element={<ShippingPolicy />} />
+  <Route path="/pages/refund-policy" element={<RefundPolicy />} />
+</Routes>
   <Whatsapp />
         <Footer />
 

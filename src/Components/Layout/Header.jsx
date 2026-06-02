@@ -59,13 +59,12 @@ const Header = () => {
         </div>
 
         {/* DESKTOP MENU */}
-        <nav className="hidden md:flex items-center gap-8">
+    <nav className="hidden md:flex items-center gap-8">
           <Link to="/" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Home</Link>
-          <Link to="/about" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">About Us</Link>
-          <Link to="/contact" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Contact Us</Link>
-          <Link to="/track" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Track Order</Link>
-          <Link to="/blogs" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Blogs</Link>
-          {/* <Link to="/services" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Services</Link> */}
+          <Link to="/pages/about" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">About Us</Link>
+          <Link to="/pages/contact" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Contact Us</Link>
+          <Link to="/pages/track" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Track Order</Link>
+          <Link to="/blogs/news" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Blogs</Link>
           <ProductDropdown setMenuOpen={setMenuOpen} />
         </nav>
 
@@ -114,57 +113,35 @@ const Header = () => {
           </div>
 
           {/* LINKS */}
-          <div className="flex flex-col gap-6 text-lg font-medium">
-            <Link
-              to="/"
-              onClick={() => setMenuOpen(false)}
-              className="text-[#355e3b]"
-            >
-              Home
-            </Link>
-
-            <Link
-              to="/about"
-              onClick={() => setMenuOpen(false)}
-              className="text-[#355e3b]"
-            >
-              About Us
-            </Link>
-
-            <Link
-              to="/contact"
-              onClick={() => setMenuOpen(false)}
-              className="text-[#355e3b]"
-            >
-              Contact
-            </Link>
-
-            <Link
-              to="/track"
-              onClick={() => setMenuOpen(false)}
-              className="text-[#355e3b]"
-            >
-              Track Order
-            </Link>
-
-            <Link
-              to="/blogs"
-              onClick={() => setMenuOpen(false)}
-              className="text-[#355e3b]"
-            >
-              Blogs
-            </Link>
-
-            {/* <Link
-              to="/services"
-              onClick={() => setMenuOpen(false)}
-              className="text-[#355e3b]"
-            >
-              Services
-            </Link> */}
-
-            <ProductDropdown setMenuOpen={setMenuOpen} />
-          </div>
+    {/* DESKTOP MENU */}
+<nav className="hidden md:flex items-center gap-8">
+  <Link to="/" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">
+    Home
+  </Link>
+  
+  {/* ✅ Updated to Shopify-style path */}
+  <Link to="/pages/about" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">
+    About Us
+  </Link>
+  
+  {/* ✅ Updated to Shopify-style path */}
+  <Link to="/pages/contact" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">
+    Contact Us
+  </Link>
+  
+  {/* ✅ Updated to Shopify-style path */}
+  <Link to="/pages/track" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">
+    Track Order
+  </Link>
+  
+  {/* ✅ Updated to match /blogs/news */}
+  <Link to="/blogs/news" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">
+    Blogs
+  </Link>
+  
+  {/* <Link to="/pages/services" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Services</Link> */}
+  <ProductDropdown setMenuOpen={setMenuOpen} />
+</nav>
         </div>
       </div>
 
