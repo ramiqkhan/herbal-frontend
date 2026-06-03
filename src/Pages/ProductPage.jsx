@@ -142,11 +142,12 @@ const ProductPage = () => {
 
   return (
     <>  
+      {/* ✅ UPDATED: Dashboard sa meta tags yahan map ho rahe hain fallback setups ke sath */}
       <SEO
-        title={`${product?.name} | Herbalyze`}
-        description={product?.description?.substring(0, 160)}
-        keywords={`${product?.name}, herbal product, herbalyze`}
-        image={activeImage}
+        title={product?.metaTitle || `${product?.name} | Herbalyze`}
+        description={product?.metaDescription || product?.description?.substring(0, 160)}
+        keywords={product?.metaKeywords || `${product?.name}, herbal product, herbalyze`}
+        image={activeImage || (product?.images && product?.images[0])}
         url={`https://www.theherbalyze.com/product/${seoUrl}`}
       />
       
