@@ -564,7 +564,7 @@
 /////////////////////////////
 // only image banner 
 
-import heroBanner from "../../assets/herbal.jpeg";
+import heroBanner from "../../assets/banner.jpeg";
 
 const HeroBanner = () => {
   return (

@@ -135,7 +135,7 @@
 import { useState, useEffect } from "react";
 import { Mail, Phone, Loader2 } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
-import navPic from "../../assets/logotext.png";
+import navPic from "../../assets/logore.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -200,14 +200,18 @@ const Footer = () => {
           {/* CONTACT SECTION (LEFT BLOCK) */}
           <div className="w-full md:w-[28%] space-y-5 text-center md:text-left">
             {/* LOGO */}
-            <div className="flex justify-center md:justify-start">
-              <img
-                src={navPic}
-                alt="Herbalyze Logo"
-                className="w-[130px] sm:w-[170px] md:w-[210px] lg:w-[240px] h-auto object-contain"
-              />
-            </div>
-
+<div className="flex justify-center md:justify-start">
+  <img
+    src={navPic}
+    alt="Herbalyze Logo"
+    // Sets a precise aspect ratio calculation based on your 2850x694 dimensions
+    // Scaled fluidly across mobile, tablets, small laptops, and ultrawide screens
+    className="w-[180px] xs:w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[200px] h-auto object-contain max-w-full"
+    loading="lazy"
+    width="2850"
+    height="694"
+  />
+</div>
             {/* ADDRESS */}
             <p className="text-sm leading-relaxed text-gray-400">
               Pechs Block 2, Karachi, Pakistan
