@@ -142,13 +142,14 @@ const ProductPage = () => {
 
   return (
     <>  
-      {/* ✅ UPDATED: Dashboard sa meta tags yahan map ho rahe hain fallback setups ke sath */}
+      {/* ✅ FIXED CONFIGURATION: Product Tags falling array mappings fixed tightly */}
       <SEO
         title={product?.metaTitle || `${product?.name} | Herbalyze`}
         description={product?.metaDescription || product?.description?.substring(0, 160)}
-        keywords={product?.metaKeywords || `${product?.name}, herbal product, herbalyze`}
+        keywords={product?.metaKeywords || `${product?.name}, herbal product`}
         image={activeImage || (product?.images && product?.images[0])}
-        url={`https://www.theherbalyze.com/product/${seoUrl}`}
+        url={`https://www.theherbalyze.com/product/${product?.seoUrl || seoUrl}`}
+        tags={product?.productTags || product?.tags}
       />
       
       <section className="max-w-[1200px] mx-auto px-4 sm:px-6 py-12">
@@ -227,7 +228,6 @@ const ProductPage = () => {
                 <h3 className="text-xs font-bold uppercase text-gray-400 tracking-wider mb-3">Select Size</h3>
                 <div className="flex flex-wrap gap-3">
                   {product.sizes.map((size, index) => {
-                    // ✅ FIXED: Fallback tracking back to correct variations structure checking (_id / label)
                     const isSelected = selectedSize?._id === size._id || selectedSize?.label === size.label;
                     return (
                       <button
