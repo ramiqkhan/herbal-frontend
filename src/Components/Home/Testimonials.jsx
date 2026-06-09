@@ -123,7 +123,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <section className="bg-[#f5f3ee] py-16 px-4 min-h-[500px] flex flex-col justify-center">
+    <section className=" py-16 px-4 min-h-[500px] flex flex-col justify-center">
       
       {/* Structural Heading Info section */}
       <div className="text-center mb-12">

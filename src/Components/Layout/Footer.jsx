@@ -135,7 +135,7 @@
 import { useState, useEffect } from "react";
 import { Mail, Phone, Loader2 } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
-import navPic from "../../assets/logore.png";
+import navPic from "../../assets/Footerlogo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {

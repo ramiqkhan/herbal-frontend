@@ -2,7 +2,7 @@ import { ArrowRight, ShoppingBag } from "lucide-react";
 
 const Promo = () => {
   return (
-    <section className="w-full bg-[#f8f5ee] px-3 sm:px-5 lg:px-8 py-6 sm:py-10 overflow-hidden">
+    <section className="w-full  px-3 sm:px-5 lg:px-8 py-6 sm:py-10 overflow-hidden">
       
       {/* MAIN PROMO BOX */}
       <div

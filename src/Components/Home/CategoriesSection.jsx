@@ -73,7 +73,7 @@ const CategoryCard = () => {
   };
 
   return (
-    <section className="w-full bg-[#fdfcfb] py-20 sm:py-28">
+    <section className="w-full py-20 sm:py-28">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* HEADER SECTION */}

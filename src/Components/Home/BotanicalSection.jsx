@@ -9,7 +9,7 @@ import {
 
 const BotanicalSection = () => {
   return (
-    <section className="bg-[#f5f3ee] py-14 md:py-20 px-4 overflow-hidden">
+    <section className=" py-14 md:py-20 px-4 overflow-hidden">
       
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
         
