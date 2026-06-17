@@ -20,6 +20,8 @@ import Checkout from "./Pages/Checkout";
 import ProductPage from "./Pages/ProductPage";
 import { HelmetProvider } from "react-helmet-async";
 import AllProducts from "./Pages/allproduct";
+import DealPage from "./Pages/deal";
+import DetailDealPage from "./Pages/detaildeal";
 
 // =========================================================
 // 🚀 INLINE SCROLL TO TOP COMPONENT (Yahan direct embed kar diya)
@@ -63,7 +65,9 @@ const App = () => {
   <Route path="/pages/about" element={<AboutUs />} />
   <Route path="/pages/contact" element={<ContactUs />} />
   <Route path="/pages/track" element={<Track />} />
-  
+              <Route path="/pages/deals" element={<DealPage />} />
+              <Route path="/pages/deals/:slug" element={<DetailDealPage />} />
+
   {/* Agar future me services chalana ho to ye path hoga */}
   {/* <Route path="/pages/services" element={<Services />} /> */}
   

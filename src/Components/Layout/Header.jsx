@@ -55,7 +55,10 @@ const Header = () => {
 
         {/* 1️⃣ DESKTOP MENU (Shows on 1024px+) */}
         <nav className="hidden lg:flex items-center gap-8">
+          
           <Link to="/" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Home</Link>
+                    <Link to="/pages/deals" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Deals</Link>
+
           <Link to="/pages/about" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">About Us</Link>
           <Link to="/pages/contact" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Contact Us</Link>
           <Link to="/pages/track" className="text-[#355e3b] font-medium hover:text-[#2d4d2f] transition">Track Order</Link>
@@ -109,6 +112,9 @@ const Header = () => {
           <div className="flex flex-col gap-6 text-lg font-medium">
             <Link to="/" onClick={() => setMenuOpen(false)} className="text-[#355e3b]">
               Home
+            </Link>
+             <Link to="/pages/deals" onClick={() => setMenuOpen(false)} className="text-[#355e3b]">
+              Deals
             </Link>
             <Link to="/pages/about" onClick={() => setMenuOpen(false)} className="text-[#355e3b]">
               About Us
