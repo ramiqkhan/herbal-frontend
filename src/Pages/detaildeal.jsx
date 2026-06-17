@@ -239,10 +239,7 @@ const DetailDealPage = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4 pt-2">
-               <div className="flex items-center gap-2 text-xs text-gray-500 bg-white p-3 rounded-xl border border-[#ebe5d8]">
-                  <Truck size={16} className="text-[#355e3b]" />
-                  Free Express Delivery
-               </div>
+         
                
                {/* ✅ FIXED DYNAMIC BADGE LOGIC */}
                <div className="flex items-center gap-2 text-xs text-gray-500 bg-white p-3 rounded-xl border border-[#ebe5d8]">

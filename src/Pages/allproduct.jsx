@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ShoppingCart, Star, Heart, Eye, ArrowRight } from "lucide-react";
 import { useCart } from "../Pages/Cart";
 import { useNavigate } from "react-router-dom";
+import DealComponent from "../Components/dealcomp";
 
 // Deployed Backend URL API Endpoint
 const BASE_URL = "https://herbal-backend-chi.vercel.app/api/products";
@@ -216,7 +217,7 @@ const AllProducts = () => {
             })}
           </div>
         )}
-
+<DealComponent/>
       </div>
     </section>
   );

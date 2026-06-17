@@ -22,6 +22,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AllProducts from "./Pages/allproduct";
 import DealPage from "./Pages/deal";
 import DetailDealPage from "./Pages/detaildeal";
+import BlogDetail from "./Pages/BlogDetail";
 
 // =========================================================
 // 🚀 INLINE SCROLL TO TOP COMPONENT (Yahan direct embed kar diya)
@@ -60,6 +61,7 @@ const App = () => {
 
   {/* 📰 Blogs (News) Link */}
   <Route path="/blogs/news" element={<Blogs />} />
+  <Route path="/blogs/:slug" element={<BlogDetail />} />
 
   {/* 📄 Pages (Shopify-Style Paths) */}
   <Route path="/pages/about" element={<AboutUs />} />
