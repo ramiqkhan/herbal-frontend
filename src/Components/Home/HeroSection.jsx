@@ -564,7 +564,7 @@
 /////////////////////////////
 // only image banner 
 
-import heroBanner from "../../assets/banner.jpeg";
+import heroBanner from "../../assets/NewBanner.png";
 
 const HeroBanner = () => {
   return (
@@ -580,7 +580,7 @@ const HeroBanner = () => {
     h-auto
     block
 
-    min-h-35
+    min-h-33
     sm:min-h-55
     md:min-h-75
     lg:min-h-105

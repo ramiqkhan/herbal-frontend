@@ -1,8 +1,12 @@
+import React from "react";
+import { useNavigate } from "react-router-dom"; // ✅ IMPORTED NAVIGATE HOOK
 import { ArrowRight, ShoppingBag } from "lucide-react";
 
 const Promo = () => {
+  const navigate = useNavigate(); // ✅ INITIALIZED NAVIGATE FOR ROUTING
+
   return (
-    <section className="w-full  px-3 sm:px-5 lg:px-8 py-6 sm:py-10 overflow-hidden">
+    <section className="w-full px-3 sm:px-5 lg:px-8 py-6 sm:py-10 overflow-hidden">
       
       {/* MAIN PROMO BOX */}
       <div
@@ -29,7 +33,6 @@ const Promo = () => {
 
         {/* BACKGROUND EFFECTS */}
         <div className="absolute inset-0">
-
           {/* GOLD GLOW */}
           <div
             className="
@@ -187,6 +190,7 @@ const Promo = () => {
 
             {/* PRIMARY BUTTON */}
             <button
+              onClick={() => navigate("/pages/more-products")} // Added here too for structural consistency
               className="
                 w-full
                 sm:w-auto
@@ -218,6 +222,7 @@ const Promo = () => {
 
             {/* SECONDARY BUTTON */}
             <button
+              onClick={() => navigate("/pages/more-products")} // ✅ Integrated route path correctly
               className="
                 w-full
                 sm:w-auto

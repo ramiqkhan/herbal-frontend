@@ -10,7 +10,7 @@ import {
 import React from "react";
 import aboutImg from "../assets/plant.png";
 import SEO from "../Components/SEO";
-
+import { useNavigate } from "react-router-dom"; // ✅ IMPORTED NAVIGATE
 const stats = [
   {
     icon: <Users size={24} />,
@@ -35,7 +35,7 @@ const stats = [
 ];
 
 const AboutUs = () => {
-
+const navigate = useNavigate();
   return (
     <><SEO
   title="About Us | Herbalyze"
@@ -76,25 +76,12 @@ url="https://www.theherbalyze.com/pages/about" />
           {/* BUTTONS */}
           {/* BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 justify-center items-center">
-
-            <button
-              className="
-      bg-[#355e3b]
-      hover:bg-[#2d4d2f]
-      text-white
-      w-full sm:w-auto
-      px-5 sm:px-7
-      py-2.5 sm:py-3
-      text-sm sm:text-base
-      rounded-full
-      font-medium
-      shadow-md
-      hover:scale-105
-      transition-all duration-300
-    "
-            >
-              Explore Products
-            </button>
+<button
+                onClick={() => navigate("/pages/more-products")}
+                className="bg-[#355e3b] hover:bg-[#2d4d2f] text-white w-full sm:w-auto px-5 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base rounded-full font-medium shadow-md hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
+                Explore Products
+              </button>
 
             <button
               className="

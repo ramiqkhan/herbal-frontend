@@ -19,6 +19,7 @@ import RefundPolicy from './Pages/RefundPolicy';
 import Checkout from "./Pages/Checkout";
 import ProductPage from "./Pages/ProductPage";
 import { HelmetProvider } from "react-helmet-async";
+import AllProducts from "./Pages/allproduct";
 
 // =========================================================
 // 🚀 INLINE SCROLL TO TOP COMPONENT (Yahan direct embed kar diya)
@@ -71,6 +72,8 @@ const App = () => {
   <Route path="/pages/terms-of-service" element={<TermsOfService />} />
   <Route path="/pages/shipping-policy" element={<ShippingPolicy />} />
   <Route path="/pages/refund-policy" element={<RefundPolicy />} />
+    <Route path="/pages/more-products" element={<AllProducts />} />
+
 </Routes>
   <Whatsapp />
         <Footer />
