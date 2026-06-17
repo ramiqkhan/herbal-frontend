@@ -217,7 +217,9 @@ const AllProducts = () => {
             })}
           </div>
         )}
-<DealComponent/>
+        <div className="mt-10">
+    
+<DealComponent/> </div>
       </div>
     </section>
   );
