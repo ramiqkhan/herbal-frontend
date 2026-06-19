@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { CalendarDays, User, ArrowLeft, Tag } from "lucide-react";
+import { CalendarDays, User, ArrowLeft, Tag, Layers } from "lucide-react";
 import SEO from "../Components/SEO";
 
 const BlogDetail = () => {
@@ -8,6 +8,9 @@ const BlogDetail = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  // ✅ TRACKS WHICH COVER IMAGE IS CURRENTLY SELECTED
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -21,6 +24,8 @@ const BlogDetail = () => {
         }
 
         setBlog(data);
+        // Reset to first image if slug changes
+        setActiveImageIndex(0);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -73,7 +78,6 @@ const BlogDetail = () => {
     // 3. Fallback: Catch leftover naked text links without lookbehind dependencies
     const strictYoutubeRegex = /(https?:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]+(?:\?[^"\s<]+)?)/g;
     processedContent = processedContent.replace(strictYoutubeRegex, (match, url, offset, fullString) => {
-      // Ensure we aren't matching a URL that is already sitting inside an iframe src attribute
       const pieces = fullString.substring(0, offset);
       if (pieces.match(/src=\s*["']?[^"']*$/)) {
         return match; 
@@ -110,7 +114,11 @@ const BlogDetail = () => {
     );
   }
 
-  const coverImage = blog.images && blog.images.length > 0 ? blog.images[0] : "";
+  const blogImages = Array.isArray(blog.images) ? blog.images.filter(Boolean) : [];
+  const primarySEOImage = blogImages.length > 0 ? blogImages[0] : "https://www.theherbalyze.com/herballogo.png";
+  
+  // Safely grab the currently selected active image URL
+  const currentActiveImage = blogImages[activeImageIndex] || blogImages[0] || "";
 
   return (
     <>
@@ -118,12 +126,11 @@ const BlogDetail = () => {
         title={`${blog.metaTitle || blog.title} | Herbalyze`}
         description={blog.metaDescription || blog.summary}
         keywords={blog.metaKeywords || "herbal remedy, wellness guide"}
-        image={coverImage || "https://www.theherbalyze.com/herballogo.png"}
+        image={primarySEOImage}
         url={`https://www.theherbalyze.com/blogs/${blog.slug}`}
         tags={blog.tags} 
       />
 
-      {/* ✅ CSS shield overlay that blocks all mouse clicks, hovers or navigation behaviors */}
       <style>{`
         .ql-video.pure-gif-mode {
           width: 100% !important;
@@ -134,8 +141,6 @@ const BlogDetail = () => {
           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
           background-color: #000;
           display: block;
-          
-          /* 🔥 CRITICAL RULES: Makes the frame completely unclickable and untargetable */
           pointer-events: none !important; 
           user-select: none !important;
         }
@@ -172,17 +177,53 @@ const BlogDetail = () => {
               </div>
             </header>
 
-            {coverImage && (
-              <div className="w-full h-auto max-h-[550px] rounded-[1rem] sm:rounded-[1.5rem] overflow-hidden mb-6 sm:mb-8 bg-[#fdfcf9] border border-[#f0eae1] flex items-center justify-center relative">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center opacity-10 blur-xl pointer-events-none" 
-                  style={{ backgroundImage: `url(${coverImage})` }}
-                />
-                <img 
-                  src={coverImage} 
-                  alt={blog.title} 
-                  className="w-full h-full max-h-[550px] object-contain relative z-10 mx-auto"
-                />
+            {/* ✅ INTERACTIVE GALLEY DISPLAY SYSTEM */}
+            {blogImages.length > 0 && (
+              <div className="mb-8 space-y-4">
+                
+                {/* 1. Main Display Box (Renders Selected Photo) */}
+                <div className="w-full h-auto max-h-[550px] rounded-[1rem] sm:rounded-[1.5rem] overflow-hidden bg-[#fdfcf9] border border-[#f0eae1] flex items-center justify-center relative shadow-sm">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center opacity-10 blur-xl pointer-events-none transition-all duration-300" 
+                    style={{ backgroundImage: `url(${currentActiveImage})` }}
+                  />
+                  <img 
+                    src={currentActiveImage} 
+                    alt={blog.title} 
+                    className="w-full h-full max-h-[550px] object-contain relative z-10 mx-auto transition-all duration-300"
+                  />
+                </div>
+
+                {/* 2. Interactive Thumbnail Row (Only shows if there's more than one picture) */}
+                {blogImages.length > 1 && (
+                  <div>
+                    <div className="text-[11px] font-bold tracking-wider text-[#4a5c4e] uppercase mb-2 flex items-center gap-1">
+                      <Layers className="w-3.5 h-3.5" /> Select Cover View ({blogImages.length})
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2.5">
+                      {blogImages.map((imgUrl, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setActiveImageIndex(index)}
+                          className={`relative w-20 h-16 sm:w-24 sm:h-20 rounded-lg overflow-hidden border transition-all duration-200 bg-[#fdfcf9] cursor-pointer focus:outline-none ${
+                            activeImageIndex === index
+                              ? "border-[#355e3b] ring-2 ring-[#355e3b]/20 scale-95 shadow-inner"
+                              : "border-[#f0eae1] hover:border-gray-400 opacity-70 hover:opacity-100"
+                          }`}
+                        >
+                          <img 
+                            src={imgUrl} 
+                            alt={`Thumbnail choice ${index + 1}`} 
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                
               </div>
             )}
 
