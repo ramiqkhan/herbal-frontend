@@ -83,23 +83,7 @@ url="https://www.theherbalyze.com/pages/about" />
                 Explore Products
               </button>
 
-            <button
-              className="
-      border border-[#355e3b]
-      text-[#355e3b]
-      hover:bg-[#355e3b]
-      hover:text-white
-      w-full sm:w-auto
-      px-5 sm:px-7
-      py-2.5 sm:py-3
-      text-sm sm:text-base
-      rounded-full
-      font-medium
-      transition-all duration-300
-    "
-            >
-              Learn More
-            </button>
+           
 
           </div>
         </div>

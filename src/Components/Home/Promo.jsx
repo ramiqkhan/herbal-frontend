@@ -190,7 +190,7 @@ const Promo = () => {
 
             {/* PRIMARY BUTTON */}
             <button
-              onClick={() => navigate("/pages/more-products")} // Added here too for structural consistency
+              onClick={() => navigate("/pages/deals")} // Added here too for structural consistency
               className="
                 w-full
                 sm:w-auto

@@ -323,6 +323,10 @@ const Footer = () => {
       {/* ✅ Path updated to match /blogs/news */}
       <Link to="/blogs/news">Blogs</Link>
     </li>
+    <li className="hover:text-white transition cursor-pointer">
+      {/* ✅ Path updated to match /blogs/news */}
+      <Link to="/pages/deals">Deals</Link>
+    </li>
   </ul>
 </div>
 
