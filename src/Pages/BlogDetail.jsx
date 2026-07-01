@@ -236,10 +236,11 @@ const BlogDetail = () => {
             )}
 
             {/* DYNAMIC CONTENT CONTAINER */}
-            <div 
-              className="prose prose-neutral max-w-none prose-sm sm:prose-base prose-headings:font-serif prose-headings:text-[#1f2f1f] prose-p:text-gray-600 prose-p:leading-relaxed prose-headings:mb-4 prose-headings:mt-8 first:prose-headings:mt-0 text-gray-700 dynamic-blog-content"
-              dangerouslySetInnerHTML={{ __html: renderEnhancedContent(blog.content) }}
-            />
+          {/* DYNAMIC CONTENT CONTAINER */}
+<div 
+  className="prose prose-neutral max-w-none prose-sm sm:prose-base prose-headings:font-serif prose-headings:text-[#1f2f1f] prose-p:text-gray-600 prose-p:leading-relaxed prose-headings:mb-4 prose-headings:mt-8 first:prose-headings:mt-0 text-gray-700 dynamic-blog-content break-words overflow-x-auto"
+  dangerouslySetInnerHTML={{ __html: renderEnhancedContent(blog.content) }}
+/>
 
             {blog.tags && blog.tags.length > 0 && (
               <div className="mt-8 sm:mt-12 pt-4 sm:pt-6 border-t border-[#f2eee6] flex flex-wrap gap-2 items-center">
