@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { CalendarDays, User, ArrowLeft, Tag, Layers } from "lucide-react";
 import SEO from "../Components/SEO";
+  import 'react-quill-new/dist/quill.snow.css';
 
 const BlogDetail = () => {
   const { slug } = useParams(); 
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
   // ✅ TRACKS WHICH COVER IMAGE IS CURRENTLY SELECTED
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -18,7 +18,7 @@ const BlogDetail = () => {
         setLoading(true);
         const response = await fetch(`https://herbal-backend-chi.vercel.app/api/blogs/${slug}`);
         const data = await response.json();
-
+console.log("RAW CONTENT:", JSON.stringify(data.content));
         if (!response.ok) {
           throw new Error(data.message || "We couldn't track down this article entry.");
         }
@@ -52,6 +52,7 @@ const BlogDetail = () => {
     if (!htmlContent) return "";
 
     let processedContent = htmlContent;
+  processedContent = processedContent.replace(/&nbsp;/g, " ");
 
     // 1. Process explicit Quill iframe elements
     processedContent = processedContent.replace(/<iframe[^>]*src="([^"]+)"[^>]*><\/iframe>/g, (iframeMatch, src) => {
@@ -131,20 +132,137 @@ const BlogDetail = () => {
         tags={blog.tags} 
       />
 
-      <style>{`
-        .ql-video.pure-gif-mode {
-          width: 100% !important;
-          aspect-ratio: 16 / 9 !important;
-          border-radius: 1rem;
-          margin-top: 1.5rem;
-          margin-bottom: 1.5rem;
-          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-          background-color: #000;
-          display: block;
-          pointer-events: none !important; 
-          user-select: none !important;
-        }
-      `}</style>
+<style>{`
+.ql-video.pure-gif-mode {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 1rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,.05);
+  background: #000;
+  display: block;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/* ===========================
+   BLOG CONTENT
+=========================== */
+
+.dynamic-blog-content{
+  color:#374151;
+  font-size:18px;
+  line-height:1.9;
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+
+  /* FIX WORD BREAKING */
+  white-space:normal !important;
+  word-break:normal !important;
+  overflow-wrap:break-word !important;
+  hyphens:none !important;
+}
+
+.dynamic-blog-content *{
+  white-space:normal !important;
+  word-break:normal !important;
+  overflow-wrap:break-word !important;
+  hyphens:none !important;
+  max-width:100%;
+}
+
+.dynamic-blog-content h1{
+  font-size:2.5rem;
+  font-weight:700;
+  line-height:1.2;
+  margin:2rem 0 1rem;
+  color:#1f2f1f;
+}
+
+.dynamic-blog-content h2{
+  font-size:2rem;
+  font-weight:700;
+  line-height:1.3;
+  margin:2rem 0 1rem;
+  color:#1f2f1f;
+}
+
+.dynamic-blog-content h3{
+  font-size:1.5rem;
+  font-weight:600;
+  line-height:1.4;
+  margin:1.75rem 0 .75rem;
+  color:#1f2f1f;
+}
+
+.dynamic-blog-content p{
+  margin-bottom:1.25rem;
+  font-size:18px;
+  line-height:1.9;
+}
+
+.dynamic-blog-content ul,
+.dynamic-blog-content ol{
+  margin:1rem 0 1.5rem;
+  padding-left:2rem;
+}
+
+.dynamic-blog-content li{
+  margin-bottom:.75rem;
+  line-height:1.9;
+}
+
+.dynamic-blog-content img{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  border-radius:16px;
+  margin:2rem 0;
+}
+
+.dynamic-blog-content iframe{
+  width:100%;
+  max-width:100%;
+  border-radius:16px;
+}
+
+.dynamic-blog-content table{
+  display:block;
+  overflow-x:auto;
+  width:100%;
+}
+
+.dynamic-blog-content a{
+  color:#355e3b;
+  text-decoration:underline;
+  word-break:break-word;
+}
+
+@media (max-width:768px){
+
+  .dynamic-blog-content{
+    font-size:16px;
+    line-height:1.8;
+  }
+
+  .dynamic-blog-content p{
+    font-size:16px;
+  }
+
+  .dynamic-blog-content h1{
+    font-size:2rem;
+  }
+
+  .dynamic-blog-content h2{
+    font-size:1.6rem;
+  }
+
+  .dynamic-blog-content h3{
+    font-size:1.3rem;
+  }
+}
+`}</style>
 
       <article className="w-full bg-[#f5f3ee] min-h-screen py-6 sm:py-12">
         <div className="max-w-[840px] mx-auto px-4 sm:px-6">
@@ -237,9 +355,12 @@ const BlogDetail = () => {
 
             {/* DYNAMIC CONTENT CONTAINER */}
           {/* DYNAMIC CONTENT CONTAINER */}
-<div 
-  className="prose prose-neutral max-w-none prose-sm sm:prose-base prose-headings:font-serif prose-headings:text-[#1f2f1f] prose-p:text-gray-600 prose-p:leading-relaxed prose-headings:mb-4 prose-headings:mt-8 first:prose-headings:mt-0 text-gray-700 dynamic-blog-content break-words overflow-x-auto"
-  dangerouslySetInnerHTML={{ __html: renderEnhancedContent(blog.content) }}
+<div
+  className="dynamic-blog-content max-w-none text-gray-700 overflow-hidden"
+  dangerouslySetInnerHTML={{
+    __html: renderEnhancedContent(blog.content),
+    
+  }}
 />
 
             {blog.tags && blog.tags.length > 0 && (
